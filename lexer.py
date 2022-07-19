@@ -1,3 +1,6 @@
+from stringprep import in_table_c12
+
+
 ESTADO_TRAMPA  =  "TRAMPA"
 
 ESTADO_FINAL  =  "ACEPTADO"
@@ -9,15 +12,15 @@ def  automatas_para ( cadena ):
     estado_actual  =  0
     estados_finales  = [ 4 ]
 
-    para  caracter  en  cadena :
+    for  caracter  in  cadena :
         
-        if  estado_actual  ==  0  y  caracter  ==  "p" :
+        if  estado_actual  ==  0  and  caracter  ==  "p" :
                 estado_actual  =  1
-        elif  estado_actual  ==  1  y  caracter  ==  "a" :
+        elif  estado_actual  ==  1  and  caracter  ==  "a" :
                 estado_actual  =  2
-        elif  estado_actual  ==  2  y  caracter  ==  "r" :
+        elif  estado_actual  ==  2  and  caracter  ==  "r" :
                 estado_actual  =  3
-        elif  estado_actual  ==  3  y  caracter  ==  "a" :
+        elif  estado_actual  ==  3  and  caracter  ==  "a" :
                 estado_actual  =  4
         else :
                 estado_actual  =  - 1
@@ -25,8 +28,124 @@ def  automatas_para ( cadena ):
     
 
     if  estado_actual  ==  - 1 :
-        volver  ESTADO_TRAMPA
-    if  estado_actual  en  estados_finales :
-        volver  ESTADO_FINAL
+        print  (ESTADO_TRAMPA)
+    if  estado_actual  in estados_finales :
+        print   (ESTADO_FINAL)
     else :
-        print  ESTADO_NO_FINAL
+        print  (ESTADO_NO_FINAL)
+
+
+def  automatas_desde ( cadena ):
+
+    estado_actual  =  0
+    estados_finales  = [ 5 ]
+
+    for  caracter  in  cadena :
+        if  estado_actual  ==  0  and  caracter  ==  "d" :
+                estado_actual  =  1
+        elif  estado_actual  ==  1  and  caracter  ==  "e" :
+                estado_actual  =  2
+        elif  estado_actual  ==  2  and  caracter  ==  "s" :
+                estado_actual  =  3
+        elif  estado_actual  ==  3  and  caracter  ==  "d" :
+                estado_actual  =  4
+        elif  estado_actual  ==  4  and  caracter  ==  "e" :
+                estado_actual  =  5
+
+        else :
+                estado_actual  =  - 1
+                break
+
+    if  estado_actual  ==  - 1 :
+        print  (ESTADO_TRAMPA)
+    if  estado_actual  in estados_finales :
+        print   (ESTADO_FINAL)
+    else :
+        print  (ESTADO_NO_FINAL)
+     
+
+def  automatas_hasta ( cadena ):
+
+    estado_actual  =  0
+    estados_finales  = [ 5 ]
+
+    for  caracter  in  cadena :
+        if  estado_actual  ==  0  and  caracter  ==  "h" :
+                estado_actual  =  1
+        elif  estado_actual  ==  1  and  caracter  ==  "a" :
+                estado_actual  =  2
+        elif  estado_actual  ==  2  and  caracter  ==  "s" :
+                estado_actual  =  3
+        elif  estado_actual  ==  3  and  caracter  ==  "t" :
+                estado_actual  =  4
+        elif  estado_actual  ==  4  and  caracter  ==  "a" :
+                estado_actual  =  5
+
+        else :
+                estado_actual  =  - 1
+                break
+
+    if  estado_actual  ==  - 1 :
+        print  (ESTADO_TRAMPA)
+    if  estado_actual  in estados_finales :
+        print   (ESTADO_FINAL)
+    else :
+        print  (ESTADO_NO_FINAL)
+ 
+
+def  automatas_si ( cadena ):
+
+    estado_actual  =  0
+    estados_finales  = [ 2 ]
+
+    for  caracter  in  cadena :
+        if  estado_actual  ==  0  and  caracter  ==  "s" :
+                estado_actual  =  1
+        elif  estado_actual  ==  1  and  caracter  ==  "i" :
+                estado_actual  =  2
+
+
+        else :
+                estado_actual  =  - 1
+                break
+
+    if  estado_actual  ==  - 1 :
+        print  (ESTADO_TRAMPA)
+    if  estado_actual  in estados_finales :
+        print   (ESTADO_FINAL)
+    else :
+        print  (ESTADO_NO_FINAL)
+
+def  automatas_entonces ( cadena ):
+
+    estado_actual  =  0
+    estados_finales  = [ 8 ]
+
+    for  caracter  in  cadena :
+        if  estado_actual  ==  0 and  caracter  ==  "e" :
+                estado_actual  =  1
+        elif  estado_actual  ==  1  and  caracter  ==  "n" :
+                estado_actual  =  2
+        elif  estado_actual  ==  2  and  caracter  ==  "t" :
+                estado_actual  =  3
+        elif  estado_actual  ==  3  and  caracter  ==  "o" :
+                estado_actual  =  4
+        elif  estado_actual  ==  4  and  caracter  ==  "n" :
+                estado_actual  =  5
+        elif  estado_actual  ==  5  and  caracter  ==  "c" :
+                estado_actual  =  6
+        elif  estado_actual  ==  6  and  caracter  ==  "e" :
+                estado_actual  =  7
+        elif  estado_actual  ==  7  and  caracter  ==  "s" :
+                estado_actual  =  8
+
+        else :
+                estado_actual  =  - 1
+                break
+
+    if  estado_actual  ==  - 1 :
+        print  (ESTADO_TRAMPA)
+    if  estado_actual  in estados_finales :
+        print   (ESTADO_FINAL)
+    else :
+        print  (ESTADO_NO_FINAL)
