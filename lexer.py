@@ -1,6 +1,3 @@
-from stringprep import in_table_c12
-
-
 ESTADO_TRAMPA  =  "TRAMPA"
 
 ESTADO_FINAL  =  "ACEPTADO"
