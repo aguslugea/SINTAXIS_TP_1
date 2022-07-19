@@ -4,6 +4,7 @@ ESTADO_FINAL  =  "ACEPTADO"
 
 ESTADO_NO_FINAL  =  "NO ACEPTADO"
         
+        #DEFINIMOS CADA VT 
         #VT = {eq, id, num, *, +, op, clp, si, entonces, sino, mostrar, aceptar, mientras, esMenorQue, hacer, (, )}
 
 
@@ -255,3 +256,65 @@ def  autómatas_esMenorQue ( cadena ):
         print   (ESTADO_FINAL)
     else :
         print  (ESTADO_NO_FINAL)
+
+def  autómatas_simbolos ( cadena ):
+    simbolos  = [ "*" , "+" ]
+
+    estado_actual  =  0
+    estados_finales  = [ 1 ]
+
+    for  caracter  in  cadena :
+        if  estado_actual  ==  0  and  caracter  in  simbolos :
+            estado_actual  =  1
+        else :
+                estado_actual  =  - 1
+                break
+
+    if  estado_actual  ==  - 1 :
+                   print  (ESTADO_TRAMPA)
+    if  estado_actual  in  estados_finales :
+                   print  (ESTADO_FINAL)
+    else :
+                  print  (ESTADO_NO_FINAL)
+
+def  autómatas_abrir_parentesis ( cadena ):
+    simbolos  = [ "(" ]
+
+    estado_actual  =  0
+    estados_finales  = [ 1 ]
+    
+    for  caracter  in  cadena :
+        if  estado_actual  ==  0  and  caracter  in  simbolos :
+            estado_actual  =  1
+        else :
+                estado_actual  =  - 1
+                break
+
+                
+    if  estado_actual  ==  - 1 :
+                print  (ESTADO_TRAMPA)
+    if  estado_actual  in  estados_finales :
+                print  (ESTADO_FINAL)
+    else :
+                print  (ESTADO_NO_FINAL)
+
+def  autómatas_cerrar_parentesis ( cadena ):
+    simbolos  = [ ")" ]
+
+    estado_actual  =  0
+    estados_finales  = [ 1 ]
+    
+    for  caracter  in  cadena :
+        if  estado_actual  ==  0  and  caracter  in  simbolos :
+            estado_actual  =  1
+        else :
+                estado_actual  =  - 1
+                break
+
+                
+    if  estado_actual  ==  - 1 :
+                print  (ESTADO_TRAMPA)
+    if  estado_actual  in  estados_finales :
+                print  (ESTADO_FINAL)
+    else :
+                print  (ESTADO_NO_FINAL)
