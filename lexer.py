@@ -1,320 +1,395 @@
-ESTADO_TRAMPA  =  "TRAMPA"
+ESTADO_TRAMPA = "TRAMPA"
 
-ESTADO_FINAL  =  "ACEPTADO"
+ESTADO_FINAL = "ACEPTADO"
 
-ESTADO_NO_FINAL  =  "NO ACEPTADO"
+ESTADO_NO_FINAL = "NO ACEPTADO"
+
+
+
+def condicion_cadena(estado_actual, estados_finales):
+
+    if estado_actual1 == -1:
+        return ESTADO_TRAMPA
+    if estado_actual1 in estados_finaless:
+        return ESTADO_FINAL
+    else:
+        return ESTADO_NO_FINAL
+    
+    
+def automata_eq(cadena):
+
+    estado_actual = 0
+    estados_finales = [2]
+
+    for caracter in cadena:
+        if estado_actual == 0 and caracter == "e":
+            estado_actual = 1
+        elif estado_actual == 1 and caracter == "q" :
+            estado_actual = 2
+        else:
+            estado_actual = -1
+            break
+
+    return condicion_cadena(estado_actual, estados_finales)
+    
+def automata_id(cadena):
+
+    letras = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","ñ","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    numeros = [ "0","1","2","3","4","5","6","7","8","9" ]
+    estado_actual = 0
+    estados_finales = [1]
+
+    for caracter in cadena:
+        if estado_actual == 0 and caracter in letras:
+           estado_actual = 1
+        elif estado_actual == 1 and caracter in letras or numeros :
+            estado_actual = 1
+        else:
+            estado_actual == -1
+            break
+
+    return condicion_cadena(estado_actual, estados_finales)
+
+def automata_num(cadena):
+
+    numeros = [ "0","1","2","3","4","5","6","7","8","9" ]
+    estado_actual = 0
+    estados_finales = [1]
+
+    for caracter in cadena:
+        if estado_actual == 0 and caracter in numeros:
+           estado_actual = 1
+        elif estado_actual == 1 and caracter in numeros:
+            estado_actual = 1
+        else:
+            estado_actual == -1
+            break
+
+    return condicion_cadena(estado_actual, estados_finales)
+
+def automata_op(cadena):
+    
+    estado_actual = 0
+    estados_finales = [2]
+    
+    for caracter in cadena:
+        if estado_actual == 0 and caracter == "o":
+            estado_actual = 1
+        elif estado_actual == 1 and caracter == "p":
+            estado_actual = 2
+        else:
+            estado_actual == -1
+            break
         
-        #DEFINIMOS CADA VT 
-        #VT = {eq, id, num, *, +, op, clp, si, entonces, sino, mostrar, aceptar, mientras, esMenorQue, hacer, (, )}
+    return condicion_cadena(estado_actual, estados_finales)
 
+def automata_clp(cadena):
+    
+    estado_actual = 0
+    estados_finales = [3]
+    
+    for caracter in cadena:
+        if estado_actual == 0 and caracter == "c":
+            estado_actual = 1
+        elif estado_actual == 1 and caracter == "l":
+            estado_actual = 2
+        elif estado_actual == 2 and caracter == "p":
+            estado_actual = 3
+        else:
+            estado_actual == -1
+            break
+        
+    return condicion_cadena(estado_actual, estados_finales) 
+    
+def automata_si(cadena):
+    
+    estado_actual = 0
+    estados_finales = [2]
+    
+    for caracter in cadena:
+        if estado_actual == 0 and caracter == "s":
+            estado_actual = 1
+        elif estado_actual == 1 and caracter == "i" :
+            estado_actual = 2
+        else:
+            estado_actual = -1
+            break
+    
+    return condicion_cadena(estado_actual, estados_finales)
 
-def  automatas_si ( cadena ):
+def automata_entonces(cadena):
 
-    estado_actual  =  0
-    estados_finales  = [ 2 ]
+    estado_actual = 0
+    estados_finales = [ 8 ]
 
-    for  caracter  in  cadena :
-        if  estado_actual  ==  0  and  caracter  ==  "s" :
-                estado_actual  =  1
-        elif  estado_actual  ==  1  and  caracter  ==  "i" :
-                estado_actual  =  2
+    for caracter in cadena:
+        if estado_actual == 0 and caracter == "e":
+            estado_actual = 1
+        elif estado_actual == 1 and caracter == "n" :
+            estado_actual = 2
+        elif estado_actual == 2 and caracter == "t" :
+            estado_actual = 3
+        elif estado_actual == 3 and caracter == "o" :
+            estado_actual = 4
+        elif estado_actual == 4 and caracter == "n" :
+            estado_actual = 5
+        elif estado_actual == 5 and caracter == "c" :
+            estado_actual = 6
+        elif estado_actual == 6 and caracter == "e" :
+            estado_actual = 7
+        elif estado_actual == 7 and caracter == "s" :
+            estado_actual = 8
 
+        else:
+            estado_actual = -1
+            break
+        
+    return condicion_cadena(estado_actual, estados_finales)
+    
+def automata_sino(cadena):
 
-        else :
-                estado_actual  =  - 1
+    estado_actual = 0
+    estados_finales = [4]
+
+    for caracter in cadena:
+        if estado_actual == 0 and caracter == "s":
+            estado_actual = 1
+        elif estado_actual == 1 and caracter == "i" :
+            estado_actual = 2
+        elif estado_actual == 2 and caracter == "n" :
+            estado_actual = 3
+        elif estado_actual == 3 and caracter == "o" :
+            estado_actual = 4
+
+        else:
+            estado_actual = -1
+            break
+            
+    return condicion_cadena(estado_actual, estados_finales)
+    
+def automata_mostrar(cadena):
+    
+    estado_actual = 0
+    estados_finales = [7]
+
+    for caracter in cadena:
+        if estado_actual == 0 and caracter == "m":
+            estado_actual = 1
+        elif estado_actual == 1 and caracter == "o" :
+            estado_actual = 2
+        elif estado_actual == 2 and caracter == "s" :
+            estado_actual = 3
+        elif estado_actual == 3 and caracter == "t" :
+            estado_actual = 4
+        elif estado_actual == 4 and caracter == "r" :
+            estado_actual = 5
+        elif estado_actual == 5 and caracter == "a" :
+            estado_actual = 6
+        elif estado_actual == 6 and caracter == "r" :
+            estado_actual = 7   
+        else:
+            estado_actual = -1
+            break
+        
+    return condicion_cadena(estado_actual, estados_finales)
+
+def automata_aceptar(cadena):
+    
+    estado_actual = 0
+    estados_finales = [7]
+
+    for caracter in cadena:
+        if estado_actual == 0 and caracter == "a":
+            estado_actual = 1
+        elif estado_actual == 1 and caracter == "c" :
+            estado_actual = 2
+        elif estado_actual == 2 and caracter == "e" :
+            estado_actual = 3
+        elif estado_actual == 3 and caracter == "p" :
+            estado_actual = 4
+        elif estado_actual == 4 and caracter == "t" :
+            estado_actual = 5
+        elif estado_actual == 5 and caracter == "a" :
+            estado_actual = 6
+        elif estado_actual == 6 and caracter == "r" :
+            estado_actual = 7   
+        else:
+            estado_actual = -1
+            break
+        
+    return condicion_cadena(estado_actual, estados_finales)
+    
+def automata_mientras(cadena):
+    
+    estado_actual = 0
+    estados_finales = [8]
+
+    for caracter in cadena:
+        if estado_actual == 0 and caracter == "m":
+            estado_actual = 1
+        elif estado_actual == 1 and caracter == "i" :
+            estado_actual = 2
+        elif estado_actual == 2 and caracter == "e" :
+            estado_actual = 3
+        elif estado_actual == 3 and caracter == "n" :
+            estado_actual = 4
+        elif estado_actual == 4 and caracter == "t" :
+            estado_actual = 5
+        elif estado_actual == 5 and caracter == "r" :
+            estado_actual = 6
+        elif estado_actual == 6 and caracter == "a" :
+            estado_actual = 7
+        elif estado_actual == 7 and caracter == "s" :
+            estado_actual = 8    
+        else:
+            estado_actual = -1
+            break
+        
+    return condicion_cadena(estado_actual, estados_finales)
+ 
+def automata_esMenorQue(cadena):
+    
+    estado_actual = 0
+    estados_finales = [10]
+
+    for caracter in cadena:
+        if estado_actual == 0 and caracter == "e":
+            estado_actual = 1
+        elif estado_actual == 1 and caracter == "s" :
+            estado_actual = 2
+        elif estado_actual == 2 and caracter == "M" :
+            estado_actual = 3
+        elif estado_actual == 3 and caracter == "e" :
+            estado_actual = 4
+        elif estado_actual == 4 and caracter == "n" :
+            estado_actual = 5
+        elif estado_actual == 5 and caracter == "o" :
+            estado_actual = 6
+        elif estado_actual == 6 and caracter == "r" :
+            estado_actual = 7
+        elif estado_actual == 7 and caracter == "Q" :
+            estado_actual = 8
+        elif estado_actual == 8 and caracter == "u" :
+            estado_actual = 9      
+        elif estado_actual == 9 and caracter == "e" :
+            estado_actual = 10  
+        else:
+            estado_actual = -1
+            break
+        
+    return condicion_cadena(estado_actual, estados_finales)
+    
+def automata_hacer(cadena):
+    
+    estado_actual = 0
+    estados_finales = [5]
+    
+    for caracter in cadena:
+        if estado_actual == 0 and caracter == "h":
+            estado_actual = 1
+        elif estado_actual == 1 and caracter == "a" :
+            estado_actual = 2
+        elif estado_actual == 2 and caracter == "c" :
+            estado_actual = 3
+        elif estado_actual == 3 and caracter == "e" :
+            estado_actual = 4
+        elif estado_actual == 4 and caracter == "r" :
+            estado_actual = 5
+        else:
+            estado_actual = -1
+            break
+    
+    return condicion_cadena(estado_actual, estados_finales)
+
+def automata_abrir_parentesis(cadena):
+    simbolos = ["("]
+
+    estado_actual = 0
+    estados_finales = [1]
+
+    for caracter in cadena:
+        if estado_actual == 0 and caracter in simbolos:
+            estado_actual = 1
+        else:
+                estado_actual = -1
                 break
+            
+    return condicion_cadena(estado_actual, estados_finales)
+    
+def  automata_cerrar_parentesis(cadena):
+    simbolos  = [")"]
 
-    if  estado_actual  ==  - 1 :
-        print  (ESTADO_TRAMPA)
-    if  estado_actual  in estados_finales :
-        print   (ESTADO_FINAL)
-    else :
-        print  (ESTADO_NO_FINAL)
-
-def  automatas_entonces ( cadena ):
-
-    estado_actual  =  0
-    estados_finales  = [ 8 ]
-
-    for  caracter  in  cadena :
-        if  estado_actual  ==  0 and  caracter  ==  "e" :
-                estado_actual  =  1
-        elif  estado_actual  ==  1  and  caracter  ==  "n" :
-                estado_actual  =  2
-        elif  estado_actual  ==  2  and  caracter  ==  "t" :
-                estado_actual  =  3
-        elif  estado_actual  ==  3  and  caracter  ==  "o" :
-                estado_actual  =  4
-        elif  estado_actual  ==  4  and  caracter  ==  "n" :
-                estado_actual  =  5
-        elif  estado_actual  ==  5  and  caracter  ==  "c" :
-                estado_actual  =  6
-        elif  estado_actual  ==  6  and  caracter  ==  "e" :
-                estado_actual  =  7
-        elif  estado_actual  ==  7  and  caracter  ==  "s" :
-                estado_actual  =  8
-
-        else :
-                estado_actual  =  - 1
-                break
-
-    if  estado_actual  ==  - 1 :
-        print  (ESTADO_TRAMPA)
-    if  estado_actual  in estados_finales :
-        print   (ESTADO_FINAL)
-    else :
-        print  (ESTADO_NO_FINAL)
-
-def  automatas_sino ( cadena ):
-
-    estado_actual  =  0
-    estados_finales  = [ 4 ]
-
-    for  caracter  in  cadena :
-        if  estado_actual  ==  0  and  caracter  ==  "s" :
-                estado_actual  =  1
-        elif  estado_actual  ==  1  and  caracter  ==  "i" :
-                estado_actual  =  2
-        elif  estado_actual  ==  2  and  caracter  ==  "n" :
-                estado_actual  =  3
-        elif  estado_actual  ==  3  and caracter  ==  "o" :
-                estado_actual  =  4
-
-        else :
-                estado_actual  =  - 1
-                break
-
-
-        if  estado_actual  ==  - 1 :
-                print  (ESTADO_TRAMPA)
-    if  estado_actual  in estados_finales :
-        print   (ESTADO_FINAL)
-    else :
-        print  (ESTADO_NO_FINAL)
-
-def  autómatas_mostrar ( cadena ):
-
-    estado_actual  =  0
-    estados_finales  = [ 7 ]
-
-    for  caracter  in  cadena :
-        if  estado_actual  ==  0  and  caracter  ==  "m" :
-                estado_actual  =  1
-        elif  estado_actual  ==  1  and  caracter  ==  "o" :
-                estado_actual  =  2
-        elif  estado_actual  ==  2  and  caracter  ==  "s" :
-                estado_actual  =  3
-        elif  estado_actual  ==  3  and  caracter  ==  "t" :
-                estado_actual  =  4
-        elif  estado_actual  ==  4  and  caracter  ==  "r" :
-                estado_actual  =  5
-        elif  estado_actual  ==  5  and caracter  ==  "a" :
-                estado_actual  =  6
-        elif  estado_actual  ==  6  and  caracter  ==  "r" :
-                estado_actual  =  7
-
-        else :
-                estado_actual  =  - 1
-                break
-
-    if  estado_actual  ==  - 1 :
-                print  (ESTADO_TRAMPA)
-    if  estado_actual  in estados_finales :
-        print   (ESTADO_FINAL)
-    else :
-        print  (ESTADO_NO_FINAL)
-
-def  autómatas_aceptar ( cadena ):
-
-    estado_actual  =  0
-    estados_finales  = [ 7 ]
-
-    for  caracter  in  cadena :
-        if  estado_actual  ==  0  and  caracter  ==  "a" :
-                estado_actual  =  1
-        elif  estado_actual  ==  1  and  caracter  ==  "c" :
-                estado_actual  =  2
-        elif  estado_actual  ==  2  and  caracter  ==  "e" :
-                estado_actual  =  3
-        elif  estado_actual  ==  3  and  caracter  ==  "p" :
-                estado_actual  =  4
-        elif  estado_actual  ==  4  and  caracter  ==  "t" :
-                estado_actual  =  5
-        elif  estado_actual  ==  5  and  caracter  ==  "a" :
-                estado_actual  =  6
-        elif  estado_actual  ==  6  and  caracter  ==  "r" :
-                estado_actual  =  7
-
-        else :
-                estado_actual  =  - 1
-                break
-
-    if  estado_actual  ==  - 1 :
-                print  (ESTADO_TRAMPA)
-    if  estado_actual  in estados_finales :
-        print   (ESTADO_FINAL)
-    else :
-        print  (ESTADO_NO_FINAL)
-
-def  autómatas_mientras ( cadena ):
-
-    estado_actual  =  0
-    estados_finales  = [ 7 ]
-
-    for  caracter  in  cadena :
-        if  estado_actual  ==  0  and  caracter  ==  "m" :
-                estado_actual  =  1
-        elif  estado_actual  ==  1  and  caracter  ==  "i" :
-                estado_actual  =  2
-        elif  estado_actual  ==  2  and  caracter  ==  "e" :
-                estado_actual  =  3
-        elif  estado_actual  ==  3  and  caracter  ==  "n" :
-                estado_actual  =  4
-        elif  estado_actual  ==  4  and  caracter  ==  "t" :
-                estado_actual  =  5
-        elif  estado_actual  ==  5  and  caracter  ==  "r" :
-                estado_actual  =  6
-        elif  estado_actual  ==  6  and  caracter  ==  "a" :
-                estado_actual  =  7
-        elif  estado_actual  ==  7  and  caracter  ==  "s" :
-                estado_actual  =  8
-
-        else :
-                estado_actual  =  - 1
-                break
-
-    if  estado_actual  ==  - 1 :
-                print  (ESTADO_TRAMPA)
-    if  estado_actual  in estados_finales :
-        print   (ESTADO_FINAL)
-    else :
-        print  (ESTADO_NO_FINAL)
-
-def  autómatas_esMenorQue ( cadena ):
-
-    estado_actual  =  0
-    estados_finales  = [ 7 ]
-
-    for  caracter  in  cadena :
-        if  estado_actual  ==  0  and  caracter  ==  "e" :
-                estado_actual  =  1
-        elif  estado_actual  ==  1  and  caracter  ==  "s" :
-                estado_actual  =  2
-        elif  estado_actual  ==  2  and  caracter  ==  "M" :
-                estado_actual  =  3
-        elif  estado_actual  ==  3  and  caracter  ==  "e" :
-                estado_actual  =  4
-        elif  estado_actual  ==  4  and  caracter  ==  "n" :
-                estado_actual  =  5
-        elif  estado_actual  ==  5  and  caracter  ==  "o" :
-                estado_actual  =  6
-        elif  estado_actual  ==  6  and  caracter  ==  "r" :
-                estado_actual  =  7
-        elif  estado_actual  ==  7  and  caracter  ==  "Q" :
-                estado_actual  =  8
-        elif  estado_actual  ==  8  and  caracter  ==  "u" :
-                estado_actual  =  9
-        elif  estado_actual  ==  9  and  caracter  ==  "e" :
-                estado_actual  =  10
-
-
-        else :
-                estado_actual  =  - 1
-                break
-
-    if  estado_actual  ==  - 1 :
-                print  (ESTADO_TRAMPA)
-    if  estado_actual  in estados_finales :
-        print   (ESTADO_FINAL)
-    else :
-        print  (ESTADO_NO_FINAL)
-
-def  autómatas_esMenorQue ( cadena ):
-
-    estado_actual  =  0
-    estados_finales  = [ 7 ]
-
-    for  caracter  in  cadena :
-        if  estado_actual  ==  0  and  caracter  ==  "h" :
-                estado_actual  =  1
-        elif  estado_actual  ==  1  and  caracter  ==  "a" :
-                estado_actual  =  2
-        elif  estado_actual  ==  2  and  caracter  ==  "c" :
-                estado_actual  =  3
-        elif  estado_actual  ==  3  and  caracter  ==  "e" :
-                estado_actual  =  4
-        elif  estado_actual  ==  4  and  caracter  ==  "r" :
-                estado_actual  =  5
-     
-        else :
-                estado_actual  =  - 1
-                break
-
-    if  estado_actual  ==  - 1 :
-                print  (ESTADO_TRAMPA)
-    if  estado_actual  in estados_finales :
-        print   (ESTADO_FINAL)
-    else :
-        print  (ESTADO_NO_FINAL)
-
-def  autómatas_simbolos ( cadena ):
-    simbolos  = [ "*" , "+" ]
-
-    estado_actual  =  0
-    estados_finales  = [ 1 ]
-
-    for  caracter  in  cadena :
-        if  estado_actual  ==  0  and  caracter  in  simbolos :
-            estado_actual  =  1
-        else :
-                estado_actual  =  - 1
-                break
-
-    if  estado_actual  ==  - 1 :
-                   print  (ESTADO_TRAMPA)
-    if  estado_actual  in  estados_finales :
-                   print  (ESTADO_FINAL)
-    else :
-                  print  (ESTADO_NO_FINAL)
-
-def  autómatas_abrir_parentesis ( cadena ):
-    simbolos  = [ "(" ]
-
-    estado_actual  =  0
-    estados_finales  = [ 1 ]
+    estado_actual=  0
+    estados_finales = [1]
     
     for  caracter  in  cadena :
         if  estado_actual  ==  0  and  caracter  in  simbolos :
             estado_actual  =  1
-        else :
+        else:
                 estado_actual  =  - 1
                 break
-
-                
-    if  estado_actual  ==  - 1 :
-                print  (ESTADO_TRAMPA)
-    if  estado_actual  in  estados_finales :
-                print  (ESTADO_FINAL)
-    else :
-                print  (ESTADO_NO_FINAL)
-
-def  autómatas_cerrar_parentesis ( cadena ):
-    simbolos  = [ ")" ]
+            
+    return condicion_cadena(estado_actual, estados_finales)
+    
+def  automata_simbolos ( cadena ):
+    simbolos  = ["*","+"]
 
     estado_actual  =  0
-    estados_finales  = [ 1 ]
-    
+    estados_finales  = [1]
+
     for  caracter  in  cadena :
         if  estado_actual  ==  0  and  caracter  in  simbolos :
             estado_actual  =  1
-        else :
-                estado_actual  =  - 1
-                break
+        else:
+            estado_actual  =  - 1
+            break
+    
+    return condicion_cadena(estado_actual, estados_finales)
+    
+#DEFINIMOS CADA VT 
+    #VT = {eq, id, num, *, +, op, clp, si, entonces, sino, mostrar, aceptar, mientras, esMenorQue, hacer, (, )}
 
-                
-    if  estado_actual  ==  - 1 :
-                print  (ESTADO_TRAMPA)
-    if  estado_actual  in  estados_finales :
-                print  (ESTADO_FINAL)
-    else :
-                print  (ESTADO_NO_FINAL)
+TOKENS = [("reservada_sino", automata_sino),("reservada_si", automata_si),("reservada_entonces", automata_entonces),("reservada_mostrar", automata_mostrar),("reservada_aceptar", automata_aceptar),("numeros", automata_num),("reservada_mientras", automata_mientras),("reservada_esMenorQue", automata_esMenorQue),("reservada_hacer", automata_hacer),("identificadores", automata_id), ("simbolos", automata_simbolos), ("igual", automata_eq),("abrir_parentesis", automata_abrir_parentesis),("cerrar_parentesis", automata_cerrar_parentesis),("abrir_llaves", automata_op),("cerrar_llaves", automata_clp),] 
+
+   
+def lexer(codigofuente):
+    tokens = []
+    posicion_actual = 0
+    
+    while posicion_actual < len(codigofuente):
+        while codigofuente[posicion_actual].isspace():
+            posicion_actual += 1
+   
+        comienzo_token = posicion_actual
+        posibles_tokens = []
+        posibles_tokens_aux = []
+        lexema = ""
+        todos_en_estado_trampa = False
+    
+    
+        while not todos_en_estado_trampa or posicion_actual < len(codigofuente):
+            todos_en_estado_trampa = True
+            lexema = codigofuente[comienzo_token : posicion_actual + 1]
+            posibles_tokens = posibles_tokens_aux
+            posibles_tokens_aux = []
+        
+            for (tipoToken,afd) in TOKENS:
+                simulo_afd = afd(lexema)
+                if simulo_afd == ESTADO_FINAL:
+                    posibles_tokens_aux.append(tipoToken)
+                    todos_en_estado_trampa = False
+                elif simulo_afd == ESTADO_NO_FINAL:
+                    todos_en_estado_trampa = False
+                    
+            posicion_actual += 1
+        
+        if len(posibles_tokens) == 0:
+            print( " ERROR : TOKEN DESCONOCIDO " + lexema )
+            
+        token = (posibles_tokens[0], lexema)
+        tokens.append(token)
+
+    return tokens
+
+print(lexer("sino si "))
+
