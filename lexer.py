@@ -35,19 +35,16 @@ def automata_eq(cadena):
 def automata_id(cadena):
 
     letras = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","ñ","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-    numeros = [ "0","1","2","3","4","5","6","7","8","9" ]
+    numeros = ["0","1","2","3","4","5","6","7","8","9"]
     estado_actual = 0
     estados_finales = [1]
-
     for caracter in cadena:
         if estado_actual == 0 and caracter in letras:
-           estado_actual = 1
-        elif estado_actual == 1 and caracter in letras or numeros :
+            estado_actual = 1
+        elif estado_actual == 1 and (caracter in letras or numeros):
             estado_actual = 1
         else:
-            estado_actual == -1
-            break
-
+            estado_actual = -1
     return condicion_cadena(estado_actual, estados_finales)
 
 def automata_num(cadena):
@@ -78,7 +75,7 @@ def automata_op(cadena):
         elif estado_actual == 1 and caracter == "p":
             estado_actual = 2
         else:
-            estado_actual == -1
+            estado_actual = -1
             break
         
     return condicion_cadena(estado_actual, estados_finales)
@@ -96,7 +93,7 @@ def automata_clp(cadena):
         elif estado_actual == 2 and caracter == "p":
             estado_actual = 3
         else:
-            estado_actual == -1
+            estado_actual = -1
             break
         
     return condicion_cadena(estado_actual, estados_finales) 
@@ -311,8 +308,8 @@ def automata_abrir_parentesis(cadena):
         if estado_actual == 0 and caracter in simbolos:
             estado_actual = 1
         else:
-                estado_actual = -1
-                break
+            estado_actual = -1
+            break
             
     return condicion_cadena(estado_actual, estados_finales)
     
@@ -326,8 +323,8 @@ def  automata_cerrar_parentesis(cadena):
         if  estado_actual  ==  0  and  caracter  in  simbolos :
             estado_actual  =  1
         else:
-                estado_actual  =  - 1
-                break
+            estado_actual  =  - 1
+            break
             
     return condicion_cadena(estado_actual, estados_finales)
     
@@ -351,58 +348,11 @@ def  automata_simbolos ( cadena ):
 
 TOKENS = [("reservada_sino", automata_sino),("reservada_si", automata_si),("reservada_entonces", automata_entonces),("reservada_mostrar", automata_mostrar),("reservada_aceptar", automata_aceptar),("numeros", automata_num),("reservada_mientras", automata_mientras),("reservada_esMenorQue", automata_esMenorQue),("reservada_hacer", automata_hacer), ("simbolos", automata_simbolos), ("igual", automata_eq),("abrir_parentesis", automata_abrir_parentesis),("cerrar_parentesis", automata_cerrar_parentesis),("abrir_llaves", automata_op),("cerrar_llaves", automata_clp),("identificadores", automata_id)] 
 
-   
-# def lexer(codigofuente):
-#     tokens = []
-#     posicion_actual = 0 
-#     while posicion_actual < len(codigofuente):
-#         inicio_lex = posicion_actual
-#         # while posicion_actual < len(codigofuente) and not codigofuente[posicion_actual].isspace():
-#         #     posicion_actual += 1
-
-
-#         posibles_tokens = []
-#         posibles_tokens_aux = []
-#         lexema = " "
-#         todos_en_estado_trampa = False
-    
-    
-#         while not todos_en_estado_trampa and posicion_actual < len(codigofuente) + 1:
-#             todos_en_estado_trampa = True
-#             lexema = codigofuente[inicio_lex: posicion_actual]
-#             posibles_tokens = posibles_tokens_aux.copy()
-#             posibles_tokens_aux = []
-        
-#             for (tipoToken,afd) in TOKENS:
-#                 simulo_afd = afd(lexema)
-#                 if simulo_afd == ESTADO_FINAL:
-#                     posibles_tokens.append(tipoToken)
-#                     print("a")
-#                     todos_en_estado_trampa = False
-#                 elif simulo_afd == ESTADO_NO_FINAL:
-#                     todos_en_estado_trampa = False
-#                     print("b")
-#             print("c")                        
-                    
-#             posicion_actual += 1
-        
-#         print(posicion_actual)
-#         if len(posibles_tokens) == 0:
-#             print( "ERROR : TOKEN DESCONOCIDO " + lexema )
-            
-#         token = (posibles_tokens[0], lexema)
-#         tokens.append(token)
-
-#     return tokens
-
-
-
-
 def lexer(codigofuente):
+	error = 0 
 	inicio_lex = 0  
 	tokens = []
 	posicion_actual = 0
-	codigofuente = codigofuente + " "
 	while posicion_actual < len(codigofuente):
 		inicio_lex = posicion_actual
 		while posicion_actual < len(codigofuente) and not codigofuente[posicion_actual].isspace():
@@ -410,7 +360,7 @@ def lexer(codigofuente):
         
 		posibles_tokens = []
 		posibles_tokens_aux = []
-		lexema = " "
+		lexema = ""
 		todos_en_estado_trampa = False
         
 		if not todos_en_estado_trampa :
@@ -428,14 +378,13 @@ def lexer(codigofuente):
 			elif simulo_afd == ESTADO_NO_FINAL:
 				todos_en_estado_trampa = False                       
                     
-		posicion_actual += 1
-  
+		posicion_actual += 1   
 		if len(posibles_tokens) == 0:
-			print( " ERROR : TOKEN DESCONOCIDO " + lexema )
+			print("ERROR : TOKEN DESCONOCIDO " + lexema)
+			error = 1
 		else:    
 			token = (posibles_tokens[0], lexema)
 			tokens.append(token)
-
-	return tokens
+	return tokens if error == 0 else ""
 
 print(lexer("sino 12 si aux ( mostrar aux )"))
